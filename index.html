@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Text to Speech Generator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="box">
+<h2>Free Text to Speech Tool</h2>
+
+<textarea id="text" placeholder="Type or paste your text here..."></textarea>
+
+<select id="lang">
+<option value="hi-IN">Hindi (India)</option>
+<option value="en-US">English (United States)</option>
+<option value="mr-IN">Marathi (India)</option>
+<option value="ta-IN">Tamil (India)</option>
+<option value="te-IN">Telugu (India)</option>
+<option value="es-ES">Spanish (Spain)</option>
+</select>
+
+<button onclick="speak()">Convert to Speech</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
