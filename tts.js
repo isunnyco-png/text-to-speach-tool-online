@@ -1,33 +1,25 @@
-import textToSpeech from "@google-cloud/text-to-speech";
-
-const client = new textToSpeech.TextToSpeechClient({
-  credentials: JSON.parse(process.env.GOOGLE_CLOUD_KEY)
-});
-
+// /api/tts.js  (for Vercel backend)
 export default async function handler(req, res) {
   try {
-    const { text, lang, voice, rate, pitch } = req.query;
+    const apiKey = process.env.GOOGLE_API_KEY; // From Vercel Environment Variables
 
-    if (!text) return res.status(400).send("Please enter text.");
-
-    const request = {
-      input: { text },
-      voice: { languageCode: lang, name: voice },
-      audioConfig: {
-        audioEncoding: "MP3",
-        speakingRate: Number(rate) || 1.0,
-        pitch: Number(pitch) || 0
+    const response = await fetch(
+      `https://texttospeech.googleapis.com/v1/text:synthesize?key=${AIzaSyAB51GCNGWDNGmliFRBIiHayrdfYKmnffA}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(req.body),
       }
-    };
+    );
 
-    const [response] = await client.synthesizeSpeech(request);
+    const data = await response.json();
+    if (!data.audioContent) {
+      return res.status(500).json({ error: "API failed", details: data });
+    }
 
-    res.setHeader("Content-Type", "audio/mpeg");
-    res.setHeader("Content-Disposition", "attachment; filename=tts.mp3");
-    return res.send(Buffer.from(response.audioContent, "base64"));
-
+    res.status(200).json({ audioContent: data.audioContent });
   } catch (error) {
-    console.error(error);
-    return res.status(500).send("Server Error: Unable to generate audio.");
+    console.error("TTS API Error:", error);
+    res.status(500).json({ error: "Server error generating MP3" });
   }
 }
