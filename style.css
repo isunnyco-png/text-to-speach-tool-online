@@ -1,55 +1,86 @@
 body {
-    font-family: Arial, sans-serif;
-    background: #f2f2f2;
     margin: 0;
-    padding: 0;
+    background: #0b1220;
+    font-family: Arial, sans-serif;
+    color: white;
 }
 
-.box {
-    background: #ffffff;
+.app-container {
     width: 90%;
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    max-width: 750px;
+    margin: 40px auto;
+    background: #141b2d;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.4);
+    border: 2px solid #1e90ff;
 }
 
-h2 {
+h1 {
+    margin: 0 0 8px 0;
+    font-size: 32px;
     text-align: center;
-    font-size: 24px;
+    color: #1e90ff;
+}
+
+.tagline {
+    text-align: center;
+    color: #b5c9f5;
     margin-bottom: 20px;
 }
 
 textarea {
     width: 100%;
-    height: 150px;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-}
-
-select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 12px;
-    border-radius: 5px;
-    border: 1px solid #aaa;
-}
-
-button {
-    width: 100%;
-    background: #000000;
-    color: white;
-    border: none;
-    padding: 14px;
-    margin-top: 15px;
+    height: 160px;
+    background: #0e1525;
+    border: 2px solid #1e90ff;
+    border-radius: 10px;
+    padding: 15px;
     font-size: 16px;
-    font-weight: bold;
+    color: white;
+    resize: none;
+}
+
+.controls-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+label {
+    font-size: 14px;
+    color: #b5c9f5;
+}
+
+input[type="range"], select {
+    width: 100%;
+    padding: 8px;
+    background: #0e1525;
+    border: 1px solid #1e90ff;
     border-radius: 6px;
+    color: white;
+}
+
+.btn-generate {
+    width: 100%;
+    background: #1e90ff;
+    border: none;
+    color: white;
+    padding: 15px;
+    font-size: 18px;
+    margin-top: 25px;
+    border-radius: 8px;
     cursor: pointer;
 }
 
-button:hover {
-    background: #333;
+.btn-generate:hover {
+    background: #1676cc;
+}
+
+#statusMsg {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #5bd1ff;
+    text-align: center;
 }
