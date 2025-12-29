@@ -1,45 +1,32 @@
-let speech = window.speechSynthesis;
-let voiceSelect = document.getElementById("voiceSelect");
-let textInput = document.getElementById("textInput");
+document.getElementById("downloadBtn").onclick = async () => {
+    let text = document.getElementById("textInput").value.trim();
+    if (!text) return alert("Enter text first!");
 
-function loadVoices() {
-    let voices = speech.getVoices();
-    voiceSelect.innerHTML = "";
-    voices.forEach((voice, i) => {
-        let opt = document.createElement("option");
-        opt.value = i;
-        opt.textContent = `${voice.name} (${voice.lang})`;
-        voiceSelect.appendChild(opt);
+    const payload = {
+        input: { text },
+        voice: { languageCode: "en-US", ssmlGender: "NEUTRAL" },
+        audioConfig: { audioEncoding: "MP3" }
+    };
+
+    const response = await fetch("/api/tts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
     });
-}
-window.speechSynthesis.onvoiceschanged = loadVoices;
 
-document.getElementById("rate").oninput = e => {
-    document.getElementById("rateVal").textContent = e.target.value;
+    const data = await response.json();
+    if (!data.audioContent) return alert("API failed. Check backend.");
+
+    // Convert base64 to mp3
+    const mp3Data = atob(data.audioContent);
+    const arrayBuffer = new Uint8Array(mp3Data.length);
+    for (let i = 0; i < mp3Data.length; i++) arrayBuffer[i] = mp3Data.charCodeAt(i);
+
+    const blob = new Blob([arrayBuffer], { type: "audio/mp3" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "voice_output.mp3";
+    a.click();
 };
-document.getElementById("pitch").oninput = e => {
-    document.getElementById("pitchVal").textContent = e.target.value;
-};
-
-document.getElementById("speakBtn").onclick = () => {
-    if (!textInput.value.trim()) return alert("Please enter some text first.");
-
-    let utter = new SpeechSynthesisUtterance(textInput.value);
-    let voices = speech.getVoices();
-    utter.voice = voices[voiceSelect.value];
-    utter.rate = document.getElementById("rate").value;
-    utter.pitch = document.getElementById("pitch").value;
-    speech.speak(utter);
-};
-
-document.getElementById("downloadBtn").onclick = () => {
-    alert("MP3 export needs backend API. I can build Node.js/Python API for full download support.");
-};
-
-document.getElementById("whatsappShare").href =
-    "https://api.whatsapp.com/send?text=" +
-    encodeURIComponent("Try this Free Text-to-Speech Tool: " + window.location.href);
-
-document.getElementById("facebookShare").href =
-    "https://www.facebook.com/sharer/sharer.php?u=" +
-    encodeURIComponent(window.location.href);
