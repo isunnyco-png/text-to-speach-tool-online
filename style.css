@@ -1,86 +1,73 @@
 body {
-    margin: 0;
-    background: #0b1220;
-    font-family: Arial, sans-serif;
-    color: white;
+  margin: 0;
+  background: #0A0F1F;
+  font-family: Arial, sans-serif;
+  color: white;
 }
-
-.app-container {
-    width: 90%;
-    max-width: 750px;
-    margin: 40px auto;
-    background: #141b2d;
-    padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.4);
-    border: 2px solid #1e90ff;
+.container {
+  width: 90%;
+  max-width: 850px;
+  margin: 50px auto;
+  background: #131b2e;
+  padding: 30px;
+  border-radius: 16px;
+  border: 2px solid #1e90ff;
+  box-shadow: 0 0 35px rgba(0,0,0,0.5);
 }
-
 h1 {
-    margin: 0 0 8px 0;
-    font-size: 32px;
-    text-align: center;
-    color: #1e90ff;
+  text-align: center;
+  font-size: 30px;
+  color: #1e90ff;
+  margin-bottom: 8px;
 }
-
-.tagline {
-    text-align: center;
-    color: #b5c9f5;
-    margin-bottom: 20px;
+.sub {
+  text-align: center;
+  color: #b5c9f5;
+  margin-bottom: 25px;
 }
-
 textarea {
-    width: 100%;
-    height: 160px;
-    background: #0e1525;
-    border: 2px solid #1e90ff;
-    border-radius: 10px;
-    padding: 15px;
-    font-size: 16px;
-    color: white;
-    resize: none;
+  width: 100%;
+  height: 170px;
+  border-radius: 10px;
+  padding: 15px;
+  background: #0d1425;
+  color: white;
+  border: 2px solid #1e90ff;
+  font-size: 16px;
 }
-
-.controls-grid {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 15px;
-    margin-top: 20px;
+.select-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin: 20px 0;
 }
-
-label {
-    font-size: 14px;
-    color: #b5c9f5;
+select, input[type="range"] {
+  width: 100%;
+  background: #0d1425;
+  border: 2px solid #1e90ff;
+  border-radius: 8px;
+  padding: 10px;
+  color: white;
 }
-
-input[type="range"], select {
-    width: 100%;
-    padding: 8px;
-    background: #0e1525;
-    border: 1px solid #1e90ff;
-    border-radius: 6px;
-    color: white;
+.range-panel {
+  margin-top: 20px;
 }
-
-.btn-generate {
-    width: 100%;
-    background: #1e90ff;
-    border: none;
-    color: white;
-    padding: 15px;
-    font-size: 18px;
-    margin-top: 25px;
-    border-radius: 8px;
-    cursor: pointer;
+.btn {
+  width: 100%;
+  margin-top: 30px;
+  padding: 15px;
+  font-size: 20px;
+  background: #1e90ff;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
 }
-
-.btn-generate:hover {
-    background: #1676cc;
+.btn:hover {
+  background: #1676cc;
 }
-
 #statusMsg {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #5bd1ff;
-    text-align: center;
+  margin-top: 20px;
+  text-align: center;
+  color: #4fe4ff;
 }
