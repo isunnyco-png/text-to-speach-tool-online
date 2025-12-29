@@ -3,32 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Text to Speech Tool | Free Online TTS</title>
+<title>Premium Text to Speech | Free Online TTS Tool</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
-    <h1>Text to Speech Converter</h1>
-    <textarea id="textInput" placeholder="Type or paste your text here..."></textarea>
+<div class="wrapper">
+    <div class="card">
+        <h1>Text to Speech Converter</h1>
+        <p class="subtitle">Type your text, choose a voice and generate speech instantly.</p>
 
-    <div class="controls">
-        <select id="voiceSelect"></select>
+        <textarea id="textInput" placeholder="Enter text here..."></textarea>
 
-        <label>Speed:
+        <div class="group-row">
+            <select id="voiceSelect" class="dropdown"></select>
+        </div>
+
+        <div class="slider-box">
+            <label>Speed <span id="rateVal">1.0</span></label>
             <input type="range" id="rate" min="0.5" max="2" step="0.1" value="1">
-        </label>
-        <label>Pitch:
+        </div>
+
+        <div class="slider-box">
+            <label>Pitch <span id="pitchVal">1.0</span></label>
             <input type="range" id="pitch" min="0" max="2" step="0.1" value="1">
-        </label>
-    </div>
+        </div>
 
-    <button id="speakBtn">Speak</button>
-    <button id="downloadBtn">Download MP3</button>
+        <div class="button-group">
+            <button id="speakBtn" class="btn primary">Speak</button>
+            <button id="downloadBtn" class="btn secondary">Download MP3</button>
+        </div>
 
-    <div class="share-buttons">
-        <a id="whatsappShare" target="_blank">WhatsApp Share</a>
-        <a id="facebookShare" target="_blank">Facebook Share</a>
+        <div class="share-buttons">
+            <a id="whatsappShare" target="_blank" class="share whatsapp">Share WhatsApp</a>
+            <a id="facebookShare" target="_blank" class="share facebook">Share Facebook</a>
+        </div>
     </div>
 </div>
 
