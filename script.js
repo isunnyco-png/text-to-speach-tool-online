@@ -6,16 +6,24 @@ function loadVoices() {
     let voices = speech.getVoices();
     voiceSelect.innerHTML = "";
     voices.forEach((voice, i) => {
-        let option = document.createElement("option");
-        option.value = i;
-        option.textContent = voice.name;
-        voiceSelect.appendChild(option);
+        let opt = document.createElement("option");
+        opt.value = i;
+        opt.textContent = `${voice.name} (${voice.lang})`;
+        voiceSelect.appendChild(opt);
     });
 }
-
 window.speechSynthesis.onvoiceschanged = loadVoices;
 
+document.getElementById("rate").oninput = e => {
+    document.getElementById("rateVal").textContent = e.target.value;
+};
+document.getElementById("pitch").oninput = e => {
+    document.getElementById("pitchVal").textContent = e.target.value;
+};
+
 document.getElementById("speakBtn").onclick = () => {
+    if (!textInput.value.trim()) return alert("Please enter some text first.");
+
     let utter = new SpeechSynthesisUtterance(textInput.value);
     let voices = speech.getVoices();
     utter.voice = voices[voiceSelect.value];
@@ -25,11 +33,13 @@ document.getElementById("speakBtn").onclick = () => {
 };
 
 document.getElementById("downloadBtn").onclick = () => {
-    alert("Browser TTS doesn’t export MP3 directly. Use backend API later for real MP3 generation.");
+    alert("MP3 export needs backend API. I can build Node.js/Python API for full download support.");
 };
 
 document.getElementById("whatsappShare").href =
-    "https://api.whatsapp.com/send?text=" + encodeURIComponent("Try this Text-to-Speech Tool: " + window.location.href);
+    "https://api.whatsapp.com/send?text=" +
+    encodeURIComponent("Try this Free Text-to-Speech Tool: " + window.location.href);
 
 document.getElementById("facebookShare").href =
-    "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(window.location.href);
+    "https://www.facebook.com/sharer/sharer.php?u=" +
+    encodeURIComponent(window.location.href);
