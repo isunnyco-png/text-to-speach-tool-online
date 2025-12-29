@@ -1,81 +1,152 @@
+/* Base layout with premium SaaS gradient */
 body {
     margin: 0;
-    background: white;
-    font-family: Arial, sans-serif;
+    padding: 0;
+    background: linear-gradient(135deg, #ffffff 0%, #e7ebf3 50%, #ffffff 100%);
+    font-family: "Inter", Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+}
+
+/* Center wrapper */
+.wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Glassmorphism card */
+.card {
+    backdrop-filter: blur(18px);
+    background: rgba(255, 255, 255, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    padding: 32px;
+    width: 100%;
+    max-width: 650px;
+    box-shadow: 0 0 35px rgba(0,0,0,0.12);
     text-align: center;
 }
 
-.container {
-    width: 95%;
-    max-width: 650px;
-    padding: 25px;
-    background: #f3f3f3;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
-}
-
+/* Typography */
 h1 {
-    color: #0033cc;
-    font-size: 26px;
-    margin-bottom: 15px;
+    margin: 0;
+    font-size: 28px;
+    color: #002b80;
+    font-weight: 700;
+}
+.subtitle {
+    font-size: 14px;
+    color: #444;
+    margin-bottom: 20px;
 }
 
+/* Inputs */
 textarea {
     width: 100%;
-    height: 140px;
-    padding: 12px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
+    height: 150px;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1.5px solid #d0d7e6;
+    background: #fff;
     resize: none;
     font-size: 16px;
+    margin-bottom: 18px;
 }
-
 textarea:focus {
-    border-color: #0033cc;
+    border-color: #2563eb;
 }
 
-.controls {
-    margin: 10px 0;
-    font-size: 14px;
-}
-
-button {
-    width: 45%;
+/* Dropdown */
+.dropdown {
+    width: 100%;
     padding: 12px;
-    border: none;
-    margin: 8px;
-    border-radius: 6px;
-    cursor: pointer;
-    color: white;
-    background: #0033cc;
+    border-radius: 12px;
+    border: 1.5px solid #d0d7e6;
+    background: #ffffff;
     font-size: 15px;
-    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+/* Sliders */
+.slider-box {
+    text-align: left;
+    margin: 10px 0;
+}
+.slider-box label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    color: #002b80;
+    font-weight: 600;
+}
+input[type="range"] {
+    width: 100%;
+}
+
+/* Buttons */
+.button-group {
+    margin-top: 15px;
+}
+.btn {
+    width: 48%;
+    padding: 14px;
+    border-radius: 10px;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: 600;
     transition: 0.25s;
 }
-
-button:hover {
-    background: #0055ff;
-}
-
-.share-buttons a {
-    display: inline-block;
-    margin: 8px;
-    padding: 10px 14px;
-    background: #25d366;
+.primary {
+    background: #2563eb;
     color: white;
-    border-radius: 6px;
+}
+.primary:hover {
+    background: #1e4fd1;
+}
+.secondary {
+    background: #4b5563;
+    color: white;
+}
+.secondary:hover {
+    background: #393f47;
+}
+
+/* Share Buttons */
+.share-buttons {
+    margin-top: 18px;
+}
+.share {
+    display: inline-block;
+    padding: 10px 16px;
+    margin: 5px;
+    color: white;
+    border-radius: 10px;
+    font-size: 14px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
+}
+.whatsapp {
+    background: #25D366;
+}
+.facebook {
+    background: #1877F2;
+}
+.share:hover {
+    opacity: 0.85;
 }
 
-.share-buttons a:hover {
-    opacity: 0.8;
-}
-
-.share-buttons a:nth-child(2) {
-    background: #1877f2;
+/* Responsive for Mobile */
+@media (max-width: 600px) {
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    textarea {
+        height: 130px;
+    }
 }
