@@ -1,49 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Advanced Text-to-Speech (TTS) | Free AI Voice</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Advanced AI Text-to-Speech | Free MP3 Download</title>
 <link rel="stylesheet" href="style.css">
 
-<!-- SEO Meta -->
-<meta name="description" content="Free AI Text to Speech with MP3 download. Convert text to audio with voice options, pitch, speed, and instant download. No login required.">
-<meta name="keywords" content="text to speech, TTS, mp3 voice generator, free TTS, AI voice, online speech tool">
-<meta name="author" content="YourName">
+<meta name="description" content="Free AI Text to Speech with multi-language support, male/female voices, pitch, speed control, and MP3 download. No login required.">
+<meta name="keywords" content="text to speech, hindi tts, english tts, ai voice, male female voice, mp3 tts, online speech generator">
 
 </head>
+
 <body>
+<div class="container">
 
-<div class="app-container">
-    <h1>AI Text-to-Speech (TTS) Generator</h1>
-    <p class="tagline">Convert text to audio and download MP3 instantly</p>
+<h1>AI Text-to-Speech Generator</h1>
+<p class="sub">Choose language, voice type, adjust settings & download MP3 audio.</p>
 
-    <textarea id="textInput" placeholder="Type or paste text here..."></textarea>
+<textarea id="textInput" placeholder="Type or paste your text here..."></textarea>
 
-    <div class="controls-grid">
-        <div>
-            <label>Voice:</label>
-            <select id="voiceSelect"></select>
-        </div>
-        <div>
-            <label>Speed:</label>
-            <input type="range" id="speedRange" min="0.5" max="2" value="1" step="0.1">
-            <span id="speedValue">1.0x</span>
-        </div>
-        <div>
-            <label>Pitch:</label>
-            <input type="range" id="pitchRange" min="0" max="2" value="1" step="0.1">
-            <span id="pitchValue">1.0</span>
-        </div>
-    </div>
+<div class="select-row">
+  <div>
+    <label>Language:</label>
+    <select id="languageSelect">
+      <option value="all">Select Language</option>
+      <option value="en">English</option>
+      <option value="hi">Hindi</option>
+      <option value="bn">Bengali</option>
+      <option value="ta">Tamil</option>
+      <option value="te">Telugu</option>
+      <option value="mr">Marathi</option>
+      <option value="gu">Gujarati</option>
+    </select>
+  </div>
 
-    <button class="btn-generate" onclick="generateSpeech()">Generate & Download MP3</button>
+  <div>
+    <label>Voice Type:</label>
+    <select id="genderSelect">
+      <option value="any">Any</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+  </div>
 
-    <audio id="audioPlayer" controls style="display:none; margin-top:20px;"></audio>
-
-    <div id="statusMsg"></div>
+  <div>
+    <label>Voice:</label>
+    <select id="voiceSelect"></select>
+  </div>
 </div>
 
+
+<div class="range-panel">
+    <label>Speed: <span id="speedValue">1.0x</span></label>
+    <input type="range" id="speedRange" min="0.5" max="2" step="0.1" value="1.0">
+
+    <label>Pitch: <span id="pitchValue">1.0</span></label>
+    <input type="range" id="pitchRange" min="0" max="2" step="0.1" value="1.0">
+</div>
+
+<button onclick="generateSpeech()" class="btn">
+  Generate & Download MP3
+</button>
+
+<audio id="audioPlayer" controls style="display:none;margin-top:20px;"></audio>
+<p id="statusMsg"></p>
+
+</div>
 <script src="script.js"></script>
 </body>
 </html>
